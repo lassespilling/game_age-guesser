@@ -1,9 +1,13 @@
 
+
 import { useContext, useEffect, useRef, useState } from 'react';
 import './App.css';
 import Guesser from './Guesser';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { GameContext } from './contexts/Game';
+import Winner from './Winner';
+import Stats from './Stats';
+const WINNING_SCORE = 100;
 
 const Intro = () => {
   const { setPlayers } = useContext(GameContext);
@@ -78,7 +82,7 @@ const Play = () => {
   useEffect(() => {
     if (players) {
       Object.values(players).forEach((p, index) => {
-        if (p.score > 200 && roundCompleted) {
+        if (p.score > WINNING_SCORE && roundCompleted) {
           setWinner(players[p.name]);
           navigate("/winner");
         }
@@ -94,47 +98,26 @@ const Play = () => {
   );
 };
 
-const Winner = () => {
-  const { winner } = useContext(GameContext);
-
-  return (
-    <>
-      <h1>Congrats {winner?.name}, you won!</h1>
-    </>
-  );
-};
 function App() {
   const { setPlayers, players } = useContext(GameContext);
   const navigate = useNavigate();
-  const [sortedByHighest, setSortedByHighest] = useState([]);
-  useEffect(() => {
-    if (players) {
-      setSortedByHighest(Object.values(players)?.map(p => p.score).sort((a, b) => a < b ? +1 : -1));
-    }
-  }, [players]);
+  const { pathname } = useLocation();
 
   return (
     <>
-      {players && <div className='stats box'>
-        <table>
-          <thead>
-            <tr><td>Player</td><td className='stats__score'>score</td></tr>
-          </thead>
-          <tbody>
-            {Object.values(players)?.map(p => {
-              return <tr className='row'><th>{p.name}</th><td className={`stats__score ${p.score === sortedByHighest[0] ? "stats__score--leading" : "stats__score--losing"}`}><span>{p.score}</span></td></tr>;
-            })}
-          </tbody>
-        </table>
-      </div>
-      }
+      <Stats floating />
       <Routes>
         <Route path="/" element={<Intro />} />
         <Route path="/start" element={<Start />} />
         <Route path="/play" element={<Play />} />
         <Route path="/winner" element={<Winner />} />
       </Routes>
-      {players && <button className='reset' onClick={() => { navigate("/"); setPlayers(null); }}>Reset</button>}
+      {players &&
+        <button
+          className='reset'
+          onClick={() => { navigate("/"); setPlayers(null); }}>
+          {pathname === "/winner" ? "Play again" : "Reset"}
+        </button>}
       {/* <Guesser /> */}
     </>
   );

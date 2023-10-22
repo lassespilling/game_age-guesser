@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -134,31 +133,4 @@ td {
 tr,
 td {
   text-align: left;
-}
-
-.stats {
-  font-size: 1.5rem;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  padding: 1rem;
-  min-width: 250px;
-}
-
-.stats__score--leading span {
-  background-color: green;
-}
-
-.stats__score--losing span {
-  background-color: red;
-}
-
-.stats__score {
-  text-align: right;
-}
-
-.stats__score span {
-  padding-right: 1rem;
-  padding-left: 1rem;
-  border-radius: 50rem;
 }

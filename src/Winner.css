@@ -1,0 +1,46 @@
+.winner {
+  overflow: hidden;
+}
+.box.winner {
+  background: radial-gradient(#9b7d46, #5c4926);
+  font-size: 0.7rem;
+  padding: 1rem 0.5rem;
+}
+.winner-animation {
+  position: fixed;
+  pointer-events: none;
+  width: 50vw;
+  height: 50vh;
+  inset: 0;
+  margin: auto;
+}
+.winner-wrapper {
+  width: 100%;
+  max-width: 400px;
+  padding-top: 3rem;
+  margin: auto;
+  margin-top: -3rem;
+}
+.floating {
+  animation: float 1.5s ease-in-out infinite;
+  --distance: -5px;
+}
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(var(--distance));
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+
+.stats-wrapper {
+  margin-top: 1rem;
+  margin-bottom: 150px;
+}

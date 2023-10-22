@@ -1,0 +1,32 @@
+.stats {
+  font-size: 1.5rem;
+  top: 1rem;
+  left: 1rem;
+  padding: 1rem;
+}
+
+.stats__score--leading span {
+  background-color: green;
+}
+
+.stats__score--losing span {
+  background-color: red;
+}
+
+.stats__score {
+  text-align: right;
+}
+
+.stats__score span {
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 50rem;
+}
+
+.stats--floating {
+  position: fixed;
+}
+
+body.victory .stats--floating {
+  display: none;
+}
