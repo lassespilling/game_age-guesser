@@ -16,7 +16,6 @@ const Intro = () => {
     setPlayers(null);
   }, []);
 
-
   return (
     <div className='box'>
       <h1>
