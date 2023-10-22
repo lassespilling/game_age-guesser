@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 export default () => {
   return defineConfig({
     plugins: [react()],
-    base: '/age-guesser/',
+    // base: '/age-guesser/',
     server: {
       // port: 1337,
       proxy: {

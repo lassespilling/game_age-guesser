@@ -8,7 +8,8 @@ import { GameProvider } from './contexts/Game.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GameProvider>
-      <Router basename='/age-guesser'
+      <Router
+      // basename='/age-guesser'
       >
         <App />
       </Router>
